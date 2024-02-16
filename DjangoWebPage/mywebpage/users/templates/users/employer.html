@@ -1,0 +1,40 @@
+{% extends "users/base.html" %}
+{% block content %}
+<div class="form-content my-3 p-3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow-lg border-0 rounded-lg mt-0 mb-5">
+                    <div class="card-header justify-content-center">
+                        <h2 class="font-weight-light my-4 text-center">Employeer</h3>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>First name</th>
+                                        <th>Last name</th>
+                                        <th>Email</th>
+                                        <th>Last login</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for x in mymembers %}
+                                    <tr>
+                                        
+                                        <th>{{ x.username }} </th>
+                                        <th><a href="details/{{ x.username }}"> {{ x.first_name }} </th>
+                                        <th>{{ x.last_name }} </th>
+                                        <th>{{ x.email }} </th>
+                                        <th>{{ x.last_login }} </th>
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,63 @@
+{% extends "users/base.html" %}
+{% block content %}
+
+<div class="form-content my-3 p-3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card shadow-lg border-0 rounded-lg mt-0">
+                    <div class="card-header justify-content-center">
+
+                        <h1 class="font-weight-light my-4 text-center">{{cont.first_name}} {{cont.last_name}}</h1>
+                        <div class="text-center">
+                            {% load static %}
+                            <h3><img class="rounded account-img my-4"
+                                    src='http://127.0.0.1:8000/media/{{mycontext.avatar}}' alt="My image"
+                                    style="cursor: pointer;"></h3>
+                        </div>
+
+                        <div class="form-group ">
+                            <label class="medium text-center px-3">Username: </label> {{cont.username}}
+                        </div>
+
+                        <div>
+                            <label class="small form-control-lg  p-3">Bio:</label>
+                            <textarea class="form-control mx-3 px-3 w-75" id="exampleFormControlTextarea1" rows="3"
+                                disabled style="overflow:auto;resize:none">{{ mycontext.bio }}</textarea>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="medium px-3">Phone Number: </label> {{mycontext.phone_number}}
+                        </div>
+                        <div>
+                            {% if mycontext.user_cv %}
+                            <a href="http://127.0.0.1:8000/media/{{mycontext.user_cv}}"
+                                download="{{cont.username}}">{{cont.first_name}} {{cont.last_name}} {% if mycontext.kind == 1 %} Portfolio {% else %} CV {% endif %}</a>
+                            {% else %}
+                            <a href="#" data-cv-not-uploaded>{{cont.first_name}} {{cont.last_name}} {% if mycontext.kind == 1 %} Portfolio {% else %} CV {% endif %}</a>
+                            {% endif %}
+                            
+                        </div>
+
+                    </div>
+                </div>
+                <div class="alert alert-primary mt-2" role="alert" data-cv-not-uploaded-alert style="display: none;">
+                    User has not uploaded a CV!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block footer_js %}
+<script>
+    $(document).ready(function () {
+        $('[data-cv-not-uploaded]').click(function (e) {
+            e.preventDefault();
+            $(this).attr("style", "color:red")
+            $('[data-cv-not-uploaded-alert]').show()
+        });
+    })
+</script>
+{% endblock footer_js %}

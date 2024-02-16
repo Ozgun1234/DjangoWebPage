@@ -1,0 +1,28 @@
+{% extends "users/base.html" %}
+{% block title %} Home Page {% endblock title%}
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome</h1>
+
+    {% load static %}
+    <img src="{% static '/logo.png' %}" alt="My image">
+    <p class="lead">
+        This is <b>A web page for a person that is looking for a employee or employer</b>
+    </p>
+    <hr class="my-4">
+    <p class="lead">
+
+
+    </p>
+</div>
+
+<div class="jumbotron">
+    <h1>Trailer of the webpage</h1>
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Etq8Y9KP5fg" title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+</div>
+
+{% endblock content %}
